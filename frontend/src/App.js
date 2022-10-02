@@ -5,6 +5,7 @@ import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import HomeScreen from './screens/HomeScreen'
 import './App.css'
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
           <Route path='/' element={<HomeScreen />} />
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
-          <Route path='/user-profile' element={<ProfileScreen />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path='/user-profile' element={<ProfileScreen />} />
+          </Route>
         </Routes>
       </main>
     </Router>
